@@ -22,6 +22,7 @@ class TestRecord {
     String description;
     String trackingUuid;
     Stage stage;
+    long count;
 
 
     public String getName() {
@@ -53,5 +54,13 @@ class TestRecord {
 
     void setStage(Stage stage) {
         this.stage = stage
+    }
+
+    long getCount() {
+        return count
+    }
+
+    void setCount(long count) {
+        this.count = count
     }
 }
