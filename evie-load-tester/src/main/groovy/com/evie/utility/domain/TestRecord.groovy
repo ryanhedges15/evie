@@ -18,7 +18,11 @@ class TestRecord {
     @Id
     private String id;
 
+    private Date eventTime;
+
     String name;
+    String actor;
+    String ActorType;
     String description;
     String trackingUuid;
     Stage stage;
@@ -62,5 +66,29 @@ class TestRecord {
 
     void setCount(long count) {
         this.count = count
+    }
+
+    String getActor() {
+        return actor
+    }
+
+    void setActor(String actor) {
+        this.actor = actor
+    }
+
+    String getActorType() {
+        return ActorType
+    }
+
+    void setActorType(String actorId) {
+        this.ActorType = actorId
+    }
+
+    Date getEventTime() {
+        return eventTime
+    }
+
+    void setEventTime(Date eventTime) {
+        this.eventTime = eventTime
     }
 }
