@@ -38,7 +38,7 @@ class RandomNameGenerator {
     static String pickRandomName(int indexCap) {
         int cap = indexCap;
         if(indexCap<words.size()) {
-            log.error("IndexCap was larger than the size of the index, using collection size");
+            log.trace("IndexCap was larger than the size of the index, using collection size");
         }
         cap = words.size()-1;
         int index = rand.nextInt(cap);

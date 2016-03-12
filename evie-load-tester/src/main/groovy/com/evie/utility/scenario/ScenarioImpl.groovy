@@ -47,19 +47,14 @@ class ScenarioImpl implements Scenario {
         def numInserted = 0;
         Random rand = new Random(System.currentTimeMillis());
         while(numInserted < numInserts) {
-            log.info("building test records set");
+            log.trace("building test records set");
             recordList = generateTestRecords(rand,actors);
-            recordList.each { record ->
-                log.info("Inserting test records")
-                trr.insert(record);
-            }
+            trr.insert(recordList);
             numInserted += recordList.size();
         }
     }
 
     List<TestRecord> generateTestRecords(Random rand, Map<String,String> actors) {
-
-
 
         def uuid = UUID.randomUUID().toString();
         Random random = new  Random(System.currentTimeMillis());
@@ -73,7 +68,7 @@ class ScenarioImpl implements Scenario {
 
             if(r > 36) {
                 break;
-                log.info("Forcing out loop");
+                log.trace("Forcing out loop");
             }
 
             TestRecord tr = new TestRecord();
@@ -86,9 +81,6 @@ class ScenarioImpl implements Scenario {
             tr.setActor(key);
             tr.setActorType(actors.get(key));
             tr.setEventTime(getRandomDate(rand));
-
-
-
             returnVal.add(tr);
         }
         return returnVal;
@@ -104,9 +96,9 @@ class ScenarioImpl implements Scenario {
         def min = rand.nextInt(59);
         def year = 2015;
 
-        log.info("Month:${month} Day:${day}");
+        log.trace("Month:${month} Day:${day}");
         Calendar cal = new GregorianCalendar(year,month,day,hour,min);
-        log.info(cal.toString());
+        log.trace(cal.toString());
 
         return cal.getTime();
     }

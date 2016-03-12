@@ -32,6 +32,12 @@ class ScenarioInvokerService {
 
         Thread insertThread = new Thread(new ScenarioImpl(scenarioInvocation.getNumberInserts(), OperationType.CREATE, testRecordRepository));
         insertThread.run();
+        Thread insertThread1 = new Thread(new ScenarioImpl(scenarioInvocation.getNumberInserts(), OperationType.CREATE, testRecordRepository));
+        insertThread.run();
+        Thread insertThread2 = new Thread(new ScenarioImpl(scenarioInvocation.getNumberInserts(), OperationType.CREATE, testRecordRepository));
+        insertThread.run();
+        Thread insertThread3 = new Thread(new ScenarioImpl(scenarioInvocation.getNumberInserts(), OperationType.CREATE, testRecordRepository));
+        insertThread.run();
 
         Thread deleteThread = new Thread(new ScenarioImpl(scenarioInvocation.getNumberDeletes(), OperationType.DELETE, testRecordRepository));
         deleteThread.run();
