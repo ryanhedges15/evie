@@ -11,7 +11,6 @@ class MongoStatRunner implements Runnable {
 
     Logger log = LoggerFactory.getLogger(MongoStatRunner.class);
 
-
     void run() {
         log.info("Startting mongostat ");
         def is = 'mongostat --json'.execute().getInputStream();
