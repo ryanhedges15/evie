@@ -31,16 +31,17 @@ class MongostatRecord extends MonitoringRecord {
     private int numberUpdates;
     private int numberDeletes;
     private int numberGetmore;
-    private int numberCommands;
+    private int numberLocalCommands;
+    private int numberReplicatedCommands;
     private int numberFlushes;
 
     private double percentageDirty;
     private double percentageCacheInUse;
     private int virtualMemorySize;
-    private int residentMegabytes;
+    private double residentMegabytes;
 
     private int queuedReads;
-    private int queuedWrires;
+    private int queuedWrites;
     private int activeClientsReading;
     private int activeClientsWriting;
 
@@ -49,6 +50,7 @@ class MongostatRecord extends MonitoringRecord {
     private int numberConnections;
     private String replicaSetName;
     private ReplicationStatus replicationStaus;
+    private List<String> fieldsWithAsterisk;
 
     String getHost() {
         return host
@@ -146,11 +148,11 @@ class MongostatRecord extends MonitoringRecord {
         this.virtualMemorySize = virtualMemorySize
     }
 
-    int getResidentMegabytes() {
+    double getResidentMegabytes() {
         return residentMegabytes
     }
 
-    void setResidentMegabytes(int residentMegabytes) {
+    void setResidentMegabytes(double residentMegabytes) {
         this.residentMegabytes = residentMegabytes
     }
 
@@ -163,11 +165,11 @@ class MongostatRecord extends MonitoringRecord {
     }
 
     int getQueuedWrires() {
-        return queuedWrires
+        return queuedWrites
     }
 
     void setQueuedWrires(int queuedWrires) {
-        this.queuedWrires = queuedWrires
+        this.queuedWrites = queuedWrires
     }
 
     int getActiveClientsReading() {
@@ -221,8 +223,39 @@ class MongostatRecord extends MonitoringRecord {
     ReplicationStatus getReplicationStaus() {
         return replicationStaus
     }
+    List<String> getFieldsWithAsterisk() {
+        return fieldsWithAsterisk
+    }
+
+    void setFieldsWithAsterisk(List<String> fieldsWithAsterisk) {
+        this.fieldsWithAsterisk = fieldsWithAsterisk
+    }
+
+    int getNumberLocalCommands() {
+        return numberLocalCommands
+    }
+
+    void setNumberLocalCommands(int numberLocalCommands) {
+        this.numberLocalCommands = numberLocalCommands
+    }
+
+    int getQueuedWrites() {
+        return queuedWrites
+    }
+
+    void setQueuedWrites(int queuedWrites) {
+        this.queuedWrites = queuedWrites
+    }
 
     void setReplicationStaus(ReplicationStatus replicationStaus) {
         this.replicationStaus = replicationStaus
+    }
+
+    int getNumberReplicatedCommands() {
+        return numberReplicatedCommands
+    }
+
+    void setNumberReplicatedCommands(int numberReplicatedCommands) {
+        this.numberReplicatedCommands = numberReplicatedCommands
     }
 }
