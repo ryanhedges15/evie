@@ -65,7 +65,7 @@ class MongoStatLineProcessor implements LineProcessor {
                     msr.numberQueries = stripAsterisk(currItem, "numberQueries", fieldsWithAsterisks);
                 } else if (currSubKey.equals("res")) {
                     //TODO convert to bytes
-                    msr.residentMegabytes = Double.parseDouble(currItem);
+                    msr.residentMegabytes = convertShorthandSizesToByteCount(currItem);
                 } else if (currSubKey.equals("time")) {
                     //TODO time
                     println(curr.get(currSubKey));
@@ -95,18 +95,18 @@ class MongoStatLineProcessor implements LineProcessor {
         }
     }
 
-    private int convertShorthandSizesToByteCount(final String sizeString) {
+    private double convertShorthandSizesToByteCount(final String sizeString) {
         String lastChar = sizeString.charAt(sizeString.length() - 1);
         String truncatedString = sizeString.substring(0, sizeString.length() - 1);
-        int size = Integer.parseInt(truncatedString);
+        double size = Double.parseDouble(truncatedString);
         if (lastChar.equalsIgnoreCase('b')) {
             return size;
 
         } else if (lastChar.equalsIgnoreCase('k')) {
             return size * 1024;
-        } else if (lastChar.equalsIgnoreCase('g')) {
+        } else if (lastChar.equalsIgnoreCase('m')) {
             return size * 1024 * 1024
-        } else if (lastChar.equalsIgnoreCase('t')) {
+        } else if (lastChar.equalsIgnoreCase('g')) {
             return size * 1024 * 1024 * 1024;
         }
     }
