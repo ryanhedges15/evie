@@ -1,4 +1,4 @@
-package com.evie.utility.domain
+package com.evie.util.domain
 
 /**
  * Created by rmhedge on 3/5/16.

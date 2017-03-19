@@ -1,6 +1,6 @@
 package com.evie.utility.repository
 
-import com.evie.utility.domain.TestRecord
+import com.evie.util.domain.TestRecord
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface TestRecordRepository extends MongoRepository<TestRecord, String> {

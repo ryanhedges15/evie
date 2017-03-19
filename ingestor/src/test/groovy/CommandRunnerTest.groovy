@@ -1,11 +1,13 @@
 import com.evie.util.CommandBuilder
-import com.evie.utility.processors.MongoStatLineProcessor
-import com.evie.utility.service.LongRunningCommandRunner
+import com.evie.util.processors.MongoStatLineProcessor
+import com.evie.util.service.LongRunningCommandRunner
+import org.junit.Ignore
 import org.junit.Test
 
 /**
  * Created by rmhedge on 4/9/16.
  */
+@Ignore
 class CommandRunnerTest {
 
 

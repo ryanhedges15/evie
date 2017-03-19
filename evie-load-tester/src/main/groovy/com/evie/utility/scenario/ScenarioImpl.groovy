@@ -1,11 +1,11 @@
 package com.evie.utility.scenario
 
-import com.evie.utility.domain.OperationType
-import com.evie.utility.domain.Stage
-import com.evie.utility.domain.TestRecord
+import com.evie.util.domain.OperationType
+import com.evie.util.domain.Stage
+import com.evie.util.domain.TestRecord
 import com.evie.utility.repository.TestRecordRepository
-import com.evie.utility.service.ActorGenerator
-import com.evie.utility.service.RandomNameGenerator
+import com.evie.util.service.ActorGenerator
+import com.evie.util.service.RandomNameGenerator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 

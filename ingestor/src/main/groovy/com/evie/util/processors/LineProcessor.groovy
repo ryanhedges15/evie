@@ -1,6 +1,6 @@
-package com.evie.utility.processors
+package com.evie.util.processors
 
-import com.evie.utility.domain.MonitoringRecord
+import com.evie.util.domain.MonitoringRecord
 
 /**
  * Created by rmhedge on 4/9/16.

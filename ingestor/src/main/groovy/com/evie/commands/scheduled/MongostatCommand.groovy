@@ -1,11 +1,10 @@
-package com.evie.commands
+package evie.commands.scheduled
 
-import com.evie.utility.processors.LineProcessor
-import com.evie.utility.processors.MongoStatLineProcessor
+import com.evie.commands.scheduled.Command
+import com.evie.util.processors.LineProcessor
+import com.evie.util.processors.MongoStatLineProcessor
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
-
-import javax.validation.Valid
 
 /**
  * Created by rmhedge on 4/22/16.
@@ -25,22 +24,22 @@ class MongostatCommand extends Command {
     private String delay;
 
     public MongostatCommand() {
-        super.commandString = 'mongostat';
+        Object.commandString = 'mongostat';
     }
 
 
     String[] getAsArray() {
         if(discover) {
-            return super.getAsArray(delay,"--port", port,"--discover","--json");
+            return Object.getAsArray(delay,"--port", port,"--discover","--json");
         }
         else {
-            return super.getAsArray(delay,"--port", port,"--json");
+            return Object.getAsArray(delay,"--port", port,"--json");
         }
     }
 
     @Value('${mongostat.run}')
     public setConfiguredToRun(boolean run) {
-        super.configuredToRun = run;
+        Object.configuredToRun = run;
     }
 
     public LineProcessor getLineProcessor() {

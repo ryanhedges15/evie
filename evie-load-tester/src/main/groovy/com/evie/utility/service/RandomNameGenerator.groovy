@@ -1,4 +1,4 @@
-package com.evie.utility.service
+package com.evie.util.service
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

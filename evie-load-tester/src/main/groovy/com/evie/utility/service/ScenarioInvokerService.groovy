@@ -1,7 +1,7 @@
-package com.evie.utility.service
+package com.evie.util.service
 
-import com.evie.utility.domain.OperationType
-import com.evie.utility.domain.ScenarioInvocation
+import com.evie.util.domain.OperationType
+import com.evie.util.domain.ScenarioInvocation
 import com.evie.utility.exception.ScenarioInvocationException
 import com.evie.utility.repository.TestRecordRepository
 import com.evie.utility.scenario.ScenarioImpl

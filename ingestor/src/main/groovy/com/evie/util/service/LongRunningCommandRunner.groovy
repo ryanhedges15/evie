@@ -1,10 +1,9 @@
-package com.evie.utility.service
+package com.evie.util.service
 
-import com.evie.commands.Command
-import com.evie.utility.processors.LineProcessor
+import com.evie.commands.scheduled.Command
+import com.evie.util.processors.LineProcessor
 
 import java.sql.Timestamp
-
 
 /**
  * Created by rmhedge on 4/9/16.

@@ -1,6 +1,6 @@
-package com.evie.commands;
+package com.evie.commands.scheduled;
 
-import com.evie.utility.processors.LineProcessor;
+import com.evie.util.processors.LineProcessor;
 
 import java.util.Map;
 

@@ -1,4 +1,5 @@
 import com.evie.util.CommandBuilder
+import org.junit.Ignore
 import org.junit.Test
 
 import static org.junit.Assert.assertEquals
@@ -6,6 +7,7 @@ import static org.junit.Assert.assertEquals
 /**
  * Created by rmhedge on 4/9/16.
  */
+@Ignore
 class CommandBuilderTest {
 
 

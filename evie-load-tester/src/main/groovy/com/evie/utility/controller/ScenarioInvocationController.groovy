@@ -1,7 +1,7 @@
 package com.evie.utility.controller
 
-import com.evie.utility.domain.ScenarioInvocation
-import com.evie.utility.service.ScenarioInvokerService
+import com.evie.util.domain.ScenarioInvocation
+import com.evie.util.service.ScenarioInvokerService
 import io.swagger.annotations.ApiOperation
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

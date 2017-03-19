@@ -1,12 +1,8 @@
-package com.evie.utility.domain
+package com.evie.util.domain
 
 import org.springframework.data.annotation.Id
 
-import javax.xml.bind.annotation.XmlAccessType
-import javax.xml.bind.annotation.XmlAccessorType
-import javax.xml.bind.annotation.XmlEnum
-import javax.xml.bind.annotation.XmlRootElement
-import javax.xml.bind.annotation.XmlTransient
+import javax.xml.bind.annotation.*
 
 /**
  * Created by rmhedge on 12/6/15.
