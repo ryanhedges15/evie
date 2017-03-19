@@ -1,5 +1,6 @@
 package com.evie.repository
 
+import org.junit.runner.RunWith
 import spock.lang.Specification
 
 /**
