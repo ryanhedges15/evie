@@ -13,7 +13,7 @@ class MongoStatRunner implements Runnable {
 
 
     void run() {
-        log.info("Startting mongostat ");
+        log.info("Starting mongostat ");
         def is = 'mongostat --json'.execute().getInputStream();
         Scanner scanner = new Scanner(is);
 
