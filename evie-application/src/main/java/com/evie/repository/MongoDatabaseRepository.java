@@ -74,7 +74,6 @@ public class MongoDatabaseRepository {
         DB db = mongoClient.getDB("test");
         String bar;
         return null;
-
     }
 
     //TODO this method
