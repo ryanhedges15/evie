@@ -111,7 +111,7 @@ var HorizontalDatabaseCardPane = React.createClass({
 
     var self = this;
     $.ajax({
-        url: "http://localhost:8100/describe/all",
+        url: "http://localhost:8100/databases/all",
       }).then(function(data) {
         self.setState({ databases: data});
       });
