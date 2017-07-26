@@ -26,7 +26,7 @@ public class MongoDatabaseDescriptorController {
     MongoDatabaseDescriptionService mongoDatabaseDescriptionService;
 
     @ApiOperation(value = "describe", nickname = "Describes all collections and databases")
-    @RequestMapping(value = "describe/all", method = RequestMethod.GET)
+    @RequestMapping(value = "databases/all", method = RequestMethod.GET)
     public List<EvieMongoDatabase> showDatabases() {
         log.debug("User has made a request to show all databases");
         return mongoDatabaseDescriptionService.retrieveAllDatabasses();

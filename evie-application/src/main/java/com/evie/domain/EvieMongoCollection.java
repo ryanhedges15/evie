@@ -1,8 +1,5 @@
 package com.evie.domain;
 
-import groovy.transform.EqualsAndHashCode;
-
-@EqualsAndHashCode
 public class EvieMongoCollection {
     private String namespace;
     private String collectonName;
