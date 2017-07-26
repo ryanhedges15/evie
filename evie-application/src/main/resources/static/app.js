@@ -1,3 +1,9 @@
+var { Router,
+      Route,
+      IndexRoute,
+      IndexLink,
+      Link } = ReactRouter;
+
 
 var CardVisual =  React.createClass({
     render:function() {
@@ -143,10 +149,46 @@ var HorizontalDatabaseCardPane = React.createClass({
   }
 });
 
+var ResourcesPage = React.createClass({
+    render:function() {
+        return(
+            <div>
+                 <ul>
+                     <li><a href="http://localhost:8100/swagger-ui.html">REST Docs</a></li>
+                     <li><a href="https://github.com/ryanhedges15/evie">GitHub Project</a></li>
+                 </ul>
+            </div>
+        )
+    }
+})
+
+var App = React.createClass({
+  render:function() {
+    return(
+    <div>
+       <h1>EVIE MongoDB Manager</h1>
+       <ul className="header">
+          <li><a>Home</a></li>
+          <li><a>Databases</a></li>
+          <li><a>Cluster Health</a></li>
+          <li><a>Development Resources</a></li>
+        </ul>
+        <HorizontalDatabaseCardPane />
+    </div>
+    );
+  }
+});
+
+
+
+
 
  ReactDOM.render(
     <div>
-        <HorizontalDatabaseCardPane />
+        <Router>
+            <Route path="/" component={App}/>
+            <Route path="/devtools" component={ResourcesPage}/>
+        </Router>
     </div>,
      document.querySelector("#container")
  );
