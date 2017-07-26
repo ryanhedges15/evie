@@ -115,7 +115,8 @@
                 </executions>
                 <configuration>
                     <stubsOutputDirectory>${project.build.directory}/generated-groovy-stubs</stubsOutputDirectory>
-                    <testStubsOutputDirectory>${project.build.directory}/generated-groovy-test-stubs</testStubsOutputDirectory>
+                    <testStubsOutputDirectory>${project.build.directory}/generated-groovy-test-stubs
+                    </testStubsOutputDirectory>
                 </configuration>
             </plugin>
             <plugin>

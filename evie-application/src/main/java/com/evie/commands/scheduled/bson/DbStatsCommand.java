@@ -5,10 +5,9 @@ package com.evie.commands.scheduled.bson;
  */
 public class DbStatsCommand extends EvieBsonCommand {
 
-    public DbStatsCommand(int scale){
-        super();
-        this.keyValPairs.put("dbStats",scale);
-        this.keyValPairs.put("scale",1);
+    public DbStatsCommand(String collectionName,int scale){
+        super(collectionName);
+        this.keyValPairs.put("scale",scale);
     }
 
     @Override

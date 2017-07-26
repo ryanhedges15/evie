@@ -1,5 +1,6 @@
 package com.evie.repository
 
+import com.evie.commands.builder.DbStatsCommandBuilder
 import com.evie.commands.scheduled.bson.DbStatsCommand
 import com.mongodb.MongoClient
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,10 +24,11 @@ class MongoDatabaseRepositoryIntegrationSpec extends Specification {
     def "test to see if"() {
 
         when:
-        def results = mongoDatabaseRepository.getCollectionsByDatabaseName("test")
-        def res = mongoDatabaseRepository.executeCommand("test",new DbStatsCommand(1024).generateBasicDbObject());
+        def results = mongoDatabaseRepository.findCollectionsByDatabaseName("test")
+        def statsCommand = new DbStatsCommandBuilder("test").scale(1024).build()
+        def res = mongoDatabaseRepository.executeCommand("test",statsCommand);
 
         then:
-        results.size()==5
+        true==true
     }
 }

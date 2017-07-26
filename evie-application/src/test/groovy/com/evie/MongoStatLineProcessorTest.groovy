@@ -9,13 +9,13 @@ import spock.lang.Specification
 class MongoStatLineProcessorTest extends Specification {
 
     File testResource = new File('src/test/resources/mongostat.txt')
-    def classUnderTest = new MongoStatLineProcessor();
+    def classUnderTest = new MongoStatLineProcessor()
 
     def "processing mongostat nice case"() {
         setup:
         List<String> lines = new ArrayList<String>()
-        testResource.text.eachLine { line->
-            lines.add(line);
+        testResource.text.eachLine { line ->
+            lines.add(line)
         }
         when:
         def result = classUnderTest.processLine(lines.get(0));
