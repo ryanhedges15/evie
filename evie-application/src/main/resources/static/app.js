@@ -44,7 +44,7 @@ var DatabaseDetailsBox =  React.createClass({
             margin:0,
             width: 250,
             height:25,
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#676565",
             display: "inline-block",
             fontFamily: "sans-serif",
             fontSize: 12,
@@ -52,6 +52,7 @@ var DatabaseDetailsBox =  React.createClass({
         };
         return (
         <div style={databaseDetailsStyle}>
+           <h4>this.props.databaseName</h4>
            <p>Database Size:{this.props.sizeInMB}</p>
            <p>Number of Collections:{this.props.numberCollections}</p>
            <p>Sharded:{this.props.isSharded}</p>
@@ -67,10 +68,11 @@ var DatabaseCard = React.createClass({
             height:400,
             width:260,
             padding:0,
-            margin:0,
-            backgroundColor:"#FFF",
+            margin:10,
+            backgroundColor:"#676565",
             alignItems : "flex-start",
             verticalAlign : "center",
+            borderStyle: "ridge",
             WebKitFilter: "drop-shadow(0px 0px 5px #666)",
             filter: "drop-shadow(0px 0px 5px #666)"
         };
@@ -78,34 +80,6 @@ var DatabaseCard = React.createClass({
         <div style={databaseCardStyle}>
             <CardVisual {...this.props}/>
             <DatabaseDetailsBox {...this.props}/>
-        </div>
-        );
-    }
-});
-
-
-
-var HorizontalDatabaseCardPane2 = React.createClass({
-
-    render:function() {
-        var horizontalBoxStyle = {
-            height:"100%",
-            width:"800",
-            padding:0,
-            backgroundColor:"#FFFFFF",
-            display:"flex",
-            alignItems:"initial",
-            paddingLeft:20,
-            verticalAlign: "top"
-
-
-        };
-        return (
-        <div style={horizontalBoxStyle}>
-            <DatabaseCard letter="1" sizeInMB="100" numberCollections="5" isSharded="false" bgColor="#8190a8"/>
-            <DatabaseCard letter="2" sizeInMB="200" numberCollections="5" isSharded="false" bgColor="#bcbc85"/>
-            <DatabaseCard letter="3" sizeInMB="100" numberCollections="5" isSharded="false" bgColor="#3ca527"/>
-            <DatabaseCard letter="4" sizeInMB="200" numberCollections="5" isSharded="false" bgColor="#d87334"/>
         </div>
         );
     }
@@ -134,7 +108,7 @@ var HorizontalDatabaseCardPane = React.createClass({
               height:"100%",
               width:"800",
               padding:0,
-              backgroundColor:"#FFFFFF",
+              backgroundColor:"#2b2727",
               display:"flex",
               alignItems:"initial",
               paddingLeft:20,
