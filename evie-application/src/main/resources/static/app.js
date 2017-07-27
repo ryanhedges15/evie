@@ -10,9 +10,9 @@ var CardVisual =  React.createClass({
        var cardVisualStyle = {
             padding:0,
             margin:0,
+            borderRadius: 5,
             width: 230,
             height:250,
-            borderStyle: "inset",
             verticalAlign:"center",
             display: "table",
             marginRight:"auto",
@@ -31,11 +31,32 @@ var CardVisual =  React.createClass({
         }
         return (
         <div style={cardVisualStyle}>
-           <p style={pStyle}> {this.props.letter} </p>
+           <p style={pStyle}> {this.props.databaseName} </p>
         </div>
         );
     }
 });
+
+var DatabaseButton = React.createClass({
+    render:function() {
+    var buttonStyle = {
+                    backgroundColor: "#4CAF50",
+                    border: "none",
+                    borderRadius:5,
+                    color: "white",
+                    padding: "10px 32px",
+                    textAlign: "center",
+                    textDecoration: "none",
+                    display: "inline-block",
+                    fontSize: 16,
+                    margin: "4px 2px",
+                    cursor: "pointer"
+            }
+    return (
+     <h2><a style={buttonStyle}>{this.props.databaseName}</a></h2>
+     );
+    }
+})
 
 var DatabaseDetailsBox =  React.createClass({
     render:function() {
@@ -43,16 +64,18 @@ var DatabaseDetailsBox =  React.createClass({
             padding:0,
             margin:0,
             width: 250,
-            height:25,
-            backgroundColor: "#676565",
+            height:35,
+            backgroundColor: "#FFF",
             display: "inline-block",
             fontFamily: "sans-serif",
             fontSize: 12,
             textAlign: "center"
         };
+
+
         return (
         <div style={databaseDetailsStyle}>
-           <h4>this.props.databaseName</h4>
+           <DatabaseButton {...this.props}/>
            <p>Database Size:{this.props.sizeInMB}</p>
            <p>Number of Collections:{this.props.numberCollections}</p>
            <p>Sharded:{this.props.isSharded}</p>
@@ -65,14 +88,14 @@ var DatabaseCard = React.createClass({
 
     render:function() {
         var databaseCardStyle = {
-            height:400,
+            height:450,
             width:260,
+            borderRadius: 5,
             padding:0,
             margin:10,
-            backgroundColor:"#676565",
+            backgroundColor:"#FFF",
             alignItems : "flex-start",
             verticalAlign : "center",
-            borderStyle: "ridge",
             WebKitFilter: "drop-shadow(0px 0px 5px #666)",
             filter: "drop-shadow(0px 0px 5px #666)"
         };
@@ -116,7 +139,7 @@ var HorizontalDatabaseCardPane = React.createClass({
           };
     var renderData = [];
     for(var i=0;i<this.state.databases.length;i++){
-        var card = <DatabaseCard letter={this.state.databases[i].databaseName} sizeInMB="100" numberCollections="5" isSharded="false" bgColor={"#"+((1<<24)*Math.random()|0).toString(16)}/>
+        var card = <DatabaseCard databaseName={this.state.databases[i].databaseName} sizeInMB="100" numberCollections="5" isSharded="false" bgColor={"#"+((1<<24)*Math.random()|0).toString(16)}/>
         renderData.push(card);
     }
     return (<div style={horizontalBoxStyle}>{renderData}</div> );
