@@ -16,10 +16,10 @@ import spock.lang.Specification
 class MongoDatabaseRepositoryIntegrationSpec extends Specification {
 
     @Autowired
-    MongoDatabaseRepository mongoDatabaseRepository;
+    MongoDatabaseRepository mongoDatabaseRepository
 
     @Autowired
-    MongoClient mongoClient;
+    MongoClient mongoClient
 
     def "test to see if"() {
 

@@ -1,12 +1,18 @@
+var { Router,
+      Route,
+      IndexRoute,
+      IndexLink,
+      Link } = ReactRouter;
+
 
 var CardVisual =  React.createClass({
     render:function() {
        var cardVisualStyle = {
             padding:0,
             margin:0,
+            borderRadius: 5,
             width: 230,
             height:250,
-            borderStyle: "inset",
             verticalAlign:"center",
             display: "table",
             marginRight:"auto",
@@ -25,11 +31,32 @@ var CardVisual =  React.createClass({
         }
         return (
         <div style={cardVisualStyle}>
-           <p style={pStyle}> {this.props.letter} </p>
+           <p style={pStyle}> {this.props.databaseName} </p>
         </div>
         );
     }
 });
+
+var DatabaseButton = React.createClass({
+    render:function() {
+    var buttonStyle = {
+                    backgroundColor: "#4CAF50",
+                    border: "none",
+                    borderRadius:5,
+                    color: "white",
+                    padding: "10px 32px",
+                    textAlign: "center",
+                    textDecoration: "none",
+                    display: "inline-block",
+                    fontSize: 16,
+                    margin: "4px 2px",
+                    cursor: "pointer"
+            }
+    return (
+     <h2><a style={buttonStyle}>{this.props.databaseName}</a></h2>
+     );
+    }
+})
 
 var DatabaseDetailsBox =  React.createClass({
     render:function() {
@@ -37,15 +64,18 @@ var DatabaseDetailsBox =  React.createClass({
             padding:0,
             margin:0,
             width: 250,
-            height:25,
-            backgroundColor: "#FFFFFF",
+            height:35,
+            backgroundColor: "#FFF",
             display: "inline-block",
             fontFamily: "sans-serif",
             fontSize: 12,
             textAlign: "center"
         };
+
+
         return (
         <div style={databaseDetailsStyle}>
+           <DatabaseButton {...this.props}/>
            <p>Database Size:{this.props.sizeInMB}</p>
            <p>Number of Collections:{this.props.numberCollections}</p>
            <p>Sharded:{this.props.isSharded}</p>
@@ -58,10 +88,11 @@ var DatabaseCard = React.createClass({
 
     render:function() {
         var databaseCardStyle = {
-            height:400,
+            height:450,
             width:260,
+            borderRadius: 5,
             padding:0,
-            margin:0,
+            margin:10,
             backgroundColor:"#FFF",
             alignItems : "flex-start",
             verticalAlign : "center",
@@ -72,34 +103,6 @@ var DatabaseCard = React.createClass({
         <div style={databaseCardStyle}>
             <CardVisual {...this.props}/>
             <DatabaseDetailsBox {...this.props}/>
-        </div>
-        );
-    }
-});
-
-
-
-var HorizontalDatabaseCardPane2 = React.createClass({
-
-    render:function() {
-        var horizontalBoxStyle = {
-            height:"100%",
-            width:"800",
-            padding:0,
-            backgroundColor:"#FFFFFF",
-            display:"flex",
-            alignItems:"initial",
-            paddingLeft:20,
-            verticalAlign: "top"
-
-
-        };
-        return (
-        <div style={horizontalBoxStyle}>
-            <DatabaseCard letter="1" sizeInMB="100" numberCollections="5" isSharded="false" bgColor="#8190a8"/>
-            <DatabaseCard letter="2" sizeInMB="200" numberCollections="5" isSharded="false" bgColor="#bcbc85"/>
-            <DatabaseCard letter="3" sizeInMB="100" numberCollections="5" isSharded="false" bgColor="#3ca527"/>
-            <DatabaseCard letter="4" sizeInMB="200" numberCollections="5" isSharded="false" bgColor="#d87334"/>
         </div>
         );
     }
@@ -128,7 +131,7 @@ var HorizontalDatabaseCardPane = React.createClass({
               height:"100%",
               width:"800",
               padding:0,
-              backgroundColor:"#FFFFFF",
+              backgroundColor:"#2b2727",
               display:"flex",
               alignItems:"initial",
               paddingLeft:20,
@@ -136,17 +139,53 @@ var HorizontalDatabaseCardPane = React.createClass({
           };
     var renderData = [];
     for(var i=0;i<this.state.databases.length;i++){
-        var card = <DatabaseCard letter={this.state.databases[i].databaseName} sizeInMB="100" numberCollections="5" isSharded="false" bgColor={"#"+((1<<24)*Math.random()|0).toString(16)}/>
+        var card = <DatabaseCard databaseName={this.state.databases[i].databaseName} sizeInMB="100" numberCollections="5" isSharded="false" bgColor={"#"+((1<<24)*Math.random()|0).toString(16)}/>
         renderData.push(card);
     }
     return (<div style={horizontalBoxStyle}>{renderData}</div> );
   }
 });
 
+var ResourcesPage = React.createClass({
+    render:function() {
+        return(
+            <div>
+                 <ul>
+                     <li><a href="http://localhost:8100/swagger-ui.html">REST Docs</a></li>
+                     <li><a href="https://github.com/ryanhedges15/evie">GitHub Project</a></li>
+                 </ul>
+            </div>
+        )
+    }
+})
+
+var App = React.createClass({
+  render:function() {
+    return(
+    <div>
+       <h1>EVIE MongoDB Manager</h1>
+       <ul className="header">
+          <li><a>Home</a></li>
+          <li><a>Databases</a></li>
+          <li><a>Cluster Health</a></li>
+          <li><a>Development Resources</a></li>
+        </ul>
+        <HorizontalDatabaseCardPane />
+    </div>
+    );
+  }
+});
+
+
+
+
 
  ReactDOM.render(
     <div>
-        <HorizontalDatabaseCardPane />
+        <Router>
+            <Route path="/" component={App}/>
+            <Route path="/devtools" component={ResourcesPage}/>
+        </Router>
     </div>,
      document.querySelector("#container")
  );
