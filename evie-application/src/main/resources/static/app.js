@@ -157,7 +157,48 @@ var ResourcesPage = React.createClass({
             </div>
         )
     }
+});
+
+var SubmitButton = React.createClass({
+    render:function() {
+    var buttonStyle = {
+                    backgroundColor: "#4CAF50",
+                    border: "none",
+                    borderRadius:5,
+                    color: "white",
+                    padding: "10px 32px",
+                    textAlign: "center",
+                    textDecoration: "none",
+                    display: "inline-block",
+                    fontSize: 16,
+                    right: 60,
+                    position:"absolute",
+                    margin: "0px 0px",
+                    cursor: "pointer"
+            }
+    return (
+     <h2><a style={buttonStyle}>Submit</a></h2>
+     );
+    }
 })
+
+var Editor = React.createClass({
+  render:function() {
+    var editorStyle = {
+        height:100,
+        overflow:"hidden",
+        themeClass:"editorTheme"
+    }
+    return(
+    <div>
+        <pre id="editor" style={editorStyle} data-editor-lang="js">
+
+        </pre>
+        <SubmitButton />
+    </div>
+    )
+    }
+});
 
 var App = React.createClass({
   render:function() {
@@ -171,6 +212,7 @@ var App = React.createClass({
           <li><a>Development Resources</a></li>
         </ul>
         <HorizontalDatabaseCardPane />
+        <Editor />
     </div>
     );
   }
@@ -180,10 +222,12 @@ var App = React.createClass({
 
 
 
+
+
  ReactDOM.render(
     <div>
         <Router>
-            <Route path="/" component={App}/>
+            <Route path="/" component={Editor}/>
             <Route path="/devtools" component={ResourcesPage}/>
         </Router>
     </div>,

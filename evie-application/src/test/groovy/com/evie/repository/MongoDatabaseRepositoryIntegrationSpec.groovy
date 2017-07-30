@@ -2,6 +2,9 @@ package com.evie.repository
 
 import com.evie.commands.builder.DbStatsCommandBuilder
 import com.evie.commands.scheduled.bson.DbStatsCommand
+import com.mongodb.BasicDBObject
+import com.mongodb.CommandResult
+import com.mongodb.DBObject
 import com.mongodb.MongoClient
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -24,9 +27,11 @@ class MongoDatabaseRepositoryIntegrationSpec extends Specification {
     def "test to see if"() {
 
         when:
-        def results = mongoDatabaseRepository.findCollectionsByDatabaseName("test")
-        def statsCommand = new DbStatsCommandBuilder("test").scale(1024).build()
-        def res = mongoDatabaseRepository.executeCommand("test",statsCommand);
+        def db = mongoClient.getDatabase("test")
+        final DBObject command = new BasicDBObject();
+        //command.put("eval", "function() { return db." + "people" + ".findOne(); }");
+        command.put("eval", "{return db.printCollectionStats()}");
+        CommandResult result = db.runCommand(command);
 
         then:
         true==true
