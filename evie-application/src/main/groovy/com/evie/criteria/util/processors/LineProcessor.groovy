@@ -1,6 +1,6 @@
-package com.evie.util.processors
+package com.evie.criteria.util.processors
 
-import com.evie.util.domain.MonitoringRecord
+import com.evie.criteria.util.domain.MonitoringRecord
 
 /**
  * Created by rmhedge on 4/9/16.

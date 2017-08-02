@@ -1,7 +1,7 @@
-package com.evie.util.processors
+package com.evie.criteria.util.processors
 
-import com.evie.util.domain.MongostatRecord
-import com.evie.util.domain.MonitoringRecord
+import com.evie.criteria.util.domain.MongostatRecord
+import com.evie.criteria.util.domain.MonitoringRecord
 import groovy.json.JsonSlurper
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

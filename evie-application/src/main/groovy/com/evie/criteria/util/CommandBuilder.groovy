@@ -1,4 +1,4 @@
-package com.evie.util
+package com.evie.criteria.util
 /**
  * Created by rmhedge on 4/9/16.
  */
