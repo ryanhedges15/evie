@@ -1,4 +1,4 @@
-package com.evie.util.domain
+package com.evie.criteria.util.domain
 
 import org.springframework.data.annotation.Id
 

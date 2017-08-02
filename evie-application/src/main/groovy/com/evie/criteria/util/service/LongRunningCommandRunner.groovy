@@ -1,7 +1,7 @@
-package com.evie.util.service
+package com.evie.criteria.util.service
 
 import com.evie.commands.scheduled.Command
-import com.evie.util.processors.LineProcessor
+import com.evie.criteria.util.processors.LineProcessor
 
 import java.sql.Timestamp
 

@@ -1,6 +1,6 @@
 package com.evie.commands.scheduled;
 
-import com.evie.util.processors.LineProcessor;
+import com.evie.criteria.util.processors.LineProcessor;
 import org.springframework.stereotype.Component;
 
 /**

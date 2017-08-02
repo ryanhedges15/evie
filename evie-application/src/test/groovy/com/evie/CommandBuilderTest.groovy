@@ -1,5 +1,5 @@
 package com.evie
-import com.evie.util.CommandBuilder
+import com.evie.criteria.util.CommandBuilder
 import org.junit.Ignore
 import org.junit.Test
 

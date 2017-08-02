@@ -1,6 +1,6 @@
 package com.evie
 
-import com.evie.util.processors.MongoStatLineProcessor
+import com.evie.criteria.util.processors.MongoStatLineProcessor
 import spock.lang.Specification
 
 /**

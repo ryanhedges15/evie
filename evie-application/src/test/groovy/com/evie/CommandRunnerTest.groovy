@@ -1,8 +1,8 @@
 package com.evie
 
-import com.evie.util.CommandBuilder
-import com.evie.util.processors.MongoStatLineProcessor
-import com.evie.util.service.LongRunningCommandRunner
+import com.evie.criteria.util.CommandBuilder
+import com.evie.criteria.util.processors.MongoStatLineProcessor
+import com.evie.criteria.util.service.LongRunningCommandRunner
 import org.junit.Ignore
 import org.junit.Test
 
