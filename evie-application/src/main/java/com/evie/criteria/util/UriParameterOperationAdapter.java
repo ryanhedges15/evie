@@ -2,56 +2,37 @@ package com.evie.criteria.util;
 
 import com.evie.criteria.util.enumueration.CriteriaOperator;
 import javafx.util.Pair;
+import org.springframework.stereotype.Service;
 
-import static com.evie.criteria.util.enumueration.CriteriaOperator.*;
-
-/**
- * Created by rmhedge on 8/1/17.
+/** Class is intended to provide a simple bride between a developers URI parameter scheme and
+ * the Criteria logic code.
+ * Created by rmhedge on 8/6/17.
  */
-public class UriParameterOperationAdapter {
-
-    /** Mimics a query language in REST which allows for complicated queries using URI params which
-     * are represented by a multivalue map
+public interface UriParameterOperationAdapter {
+    /**
+     * Maps keys and values to query operations
      * @param mapKey
      * @param value
      * @return
      */
-    public static Pair<CriteriaOperator,String> parseFromUriValue(String mapKey,String value) {
-        String key = mapKey.trim();
-        String input = value.trim();
-        if(input.endsWith(")")){
-            input = input.substring(0,input.length()-1);
-        }
-        if(input.contains("gte(")) {
-            return new Pair<>(GREATER_THAN_OR_EQUAL,input);
-        }
-        else if(input.startsWith("gt(")) {
-            return new Pair<>(GREATER_THAN,input);
-        }
-        else if(input.startsWith("lte(")) {
-            return new Pair<>(LESS_THAN_OR_EQUAL,input);
-        }
-        else if(input.startsWith("lt(")) {
-            return new Pair<>(LESS_THAN,input);
-        }
-        else if(input.contains("*")) {
-            return new Pair<>(LIKE,input);
-        }
-        else if(key.endsWith("!")) {
-            return new Pair<>(NOT_EQUAL,input);
-        }
-        else {
-            return new Pair<>(EQUAL,input);
-        }
-    }
+     Pair<CriteriaOperator,String> parseFromUriValue(String mapKey, String value);
 
     /**
-     * Sometimes it is convenient to have operators appear in the keys to mimic programming conventions
-     * We need to String them out in order to make sure we don't change the key
-     * @param input
+     * Removes api specific language from the keys of your URi. For example I prefer using
+     * != for not equal that results in a ! being appended to the URI key(foo!=bar results in
+     * foo! being the key rather than foo)
+     * @param key
      * @return
      */
-    public static String removeKeyOperators(String input) {
-        return input.replaceAll("!","");
-    }
+     String removeKeyOperators(String key);
+
+    /**
+     * Removes any operator items from the value portion of a URI param
+     * @param value
+     * @return
+     */
+     String removeValueOperators(String value);
+
+
 }
+
