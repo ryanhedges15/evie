@@ -24,7 +24,7 @@ public class DbStatsSchedulerService {
     //@Scheduled(fixedDelay = 900000L)
     @Scheduled(fixedDelay = 30000L)
     public void saveDbStats() {
-        log.info("Putting dbStats");
+        log.info("Pulling dbStats");
         dbStatsCommandService.pullCurrentDbStats();
         log.info("Finished pulling dbStats");
     }
