@@ -14,8 +14,9 @@ import java.util.List;
 
 //Describes the database and collections of the cluster.
 
-@Api
+@Api("Mongo Collections Descriptions")
 @RestController
+@RequestMapping("/api/database")
 public class MongoCollectionsDescriptorController {
 
     @Autowired

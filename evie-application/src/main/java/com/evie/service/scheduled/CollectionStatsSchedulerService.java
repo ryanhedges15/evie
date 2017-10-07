@@ -24,7 +24,7 @@ public class CollectionStatsSchedulerService {
      * Execute the annotated method with a fixed period in milliseconds between
      * invocations to log collection stats.
      */
-    @Scheduled(fixedDelay = 1000L)
+    @Scheduled(fixedDelay = 60000L)
     public void saveCollectionStats(){
         log.info("Pulling CollectionStats");
         collectionStatsCommandService.pullCurrentCollectionStats();

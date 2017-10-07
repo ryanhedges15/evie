@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Api
+@Api("Command API")
 @RestController
+@RequestMapping("/api/mongo/commands")
 public class MongoCommandExecutionController {
 
     private static final Logger log = LoggerFactory.getLogger(MongoCommandExecutionController.class);
 
-    @ApiOperation(value = "command", nickname = "Describes all collections and databases")
+    @ApiOperation(value = "command", nickname = "")
     @RequestMapping(value = "database/{databaseName}/command", method = RequestMethod.GET)
     public String getResultForCommand() {
         log.debug("User has made a request to show all databases");

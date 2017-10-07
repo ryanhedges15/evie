@@ -21,8 +21,7 @@ public class DbStatsSchedulerService {
     /**
      * Runs every 15 min to log database sizes
      */
-    //@Scheduled(fixedDelay = 900000L)
-    @Scheduled(fixedDelay = 30000L)
+    @Scheduled(fixedDelay = 60000L)
     public void saveDbStats() {
         log.info("Pulling dbStats");
         dbStatsCommandService.pullCurrentDbStats();

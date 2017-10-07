@@ -18,6 +18,7 @@ import java.util.List;
  */
 @Api
 @RestController
+@RequestMapping("/api/database/")
 public class MongoDatabaseDescriptorController {
 
     private static final Logger log = LoggerFactory.getLogger(MongoDatabaseDescriptorController.class);
@@ -26,7 +27,7 @@ public class MongoDatabaseDescriptorController {
     MongoDatabaseDescriptionService mongoDatabaseDescriptionService;
 
     @ApiOperation(value = "describe", nickname = "Describes all collections and databases")
-    @RequestMapping(value = "databases/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<EvieMongoDatabase> showDatabases() {
         log.debug("User has made a request to show all databases");
         return mongoDatabaseDescriptionService.retrieveAllDatabasses();

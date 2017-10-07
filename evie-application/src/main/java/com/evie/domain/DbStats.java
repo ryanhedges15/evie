@@ -13,7 +13,7 @@ import java.util.Date;
 @Document(collection = "dbStats")
 public class DbStats {
 
-    private String datbaseName;
+    private String databaseName;
     private Date queryTime;
     private double sizeInBytes;
     private double storageSize;
@@ -22,12 +22,12 @@ public class DbStats {
     private double averageObjectSize;
     private int numIndexes;
 
-    public String getDatbaseName() {
-        return datbaseName;
+    public String getDatabaseName() {
+        return databaseName;
     }
 
-    public void setDatbaseName(String datbaseName) {
-        this.datbaseName = datbaseName;
+    public void setDatabaseName(String databaseName) {
+        this.databaseName = databaseName;
     }
 
     public Date getQueryTime() {

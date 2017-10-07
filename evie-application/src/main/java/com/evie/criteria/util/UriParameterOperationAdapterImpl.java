@@ -27,11 +27,11 @@ public class UriParameterOperationAdapterImpl implements UriParameterOperationAd
             input = input.substring(0, input.length() - 1);
         }
         if (input.contains("gte(") && key.contains("!")) {
-            return new Pair<>(LESS_THAN, input);
+            return new Pair<>(LESS_THAN, removeValueOperators(input));
         } else if (input.startsWith("gt(") && key.contains("!")){
-            return new Pair<>(LESS_THAN_OR_EQUAL, input);
+            return new Pair<>(LESS_THAN_OR_EQUAL, removeValueOperators(input));
         } else if (input.startsWith("lte(") && key.contains("!")){
-            return new Pair<>(GREATER_THAN, input);
+            return new Pair<>(GREATER_THAN, removeValueOperators(input));
         } else if (input.startsWith("lt(") && key.contains("!")) {
             return new Pair<>(GREATER_THAN_OR_EQUAL, input);
         } else if (key.endsWith("!") && input.contains("**")) {
@@ -45,13 +45,13 @@ public class UriParameterOperationAdapterImpl implements UriParameterOperationAd
         } else if (input.contains("*")) {
             return new Pair<>(LIKE, input);
         } else if (input.contains("gte(")) {
-            return new Pair<>(GREATER_THAN_OR_EQUAL, input);
+            return new Pair<>(GREATER_THAN_OR_EQUAL, removeValueOperators(input));
         } else if (input.startsWith("gt(")) {
-            return new Pair<>(GREATER_THAN, input);
+            return new Pair<>(GREATER_THAN, removeValueOperators(input));
         } else if (input.startsWith("lte(")) {
-            return new Pair<>(LESS_THAN_OR_EQUAL, input);
+            return new Pair<>(LESS_THAN_OR_EQUAL, removeValueOperators(input));
         } else if (input.startsWith("lt(")) {
-            return new Pair<>(LESS_THAN, input);
+            return new Pair<>(LESS_THAN, removeValueOperators(input));
         } else {
             return new Pair<>(EQUAL, input);
         }
@@ -76,7 +76,9 @@ public class UriParameterOperationAdapterImpl implements UriParameterOperationAd
      * @return
      */
     public String removeValueOperators(String value) {
-        return value;
+        return value.replaceAll("^[a-z]+\\(|\\)$","");
     }
+
+
 
 }

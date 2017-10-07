@@ -41,7 +41,7 @@ public class DbStatsCommandService {
     private DbStats convertDbStatsToDomainObject(Document doc) {
         log.info(doc.toString());
         DbStats stats = new DbStats();
-        stats.setDatbaseName(doc.getString("db"));
+        stats.setDatabaseName(doc.getString("db"));
         stats.setAverageObjectSize(doc.getDouble("avgObjSize"));
         stats.setSizeInBytes(doc.getDouble("dataSize"));
         stats.setStorageSize(doc.getDouble("storageSize"));

@@ -3,7 +3,6 @@ package com.evie.criteria.util;
 import com.evie.criteria.util.enumueration.BooleanOperation;
 import com.evie.criteria.util.enumueration.CriteriaOperator;
 import com.evie.criteria.util.enumueration.MongoType;
-import com.evie.service.scheduled.DbStatsSchedulerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -57,11 +55,17 @@ public class CriteriaUtil {
         if(paramMap.get(CriteriaOperator.NOT_LIKE_IGNORE_CASE)!=null) {
             allCriteria.add(notLikeCriteria(key,paramMap.get(CriteriaOperator.NOT_LIKE_IGNORE_CASE),mongoType,true));
         }
-        if(operation==BooleanOperation.OR) {
-            return new Criteria().orOperator((Criteria[]) allCriteria.toArray());
+        if(allCriteria.size()==0) {
+            return new Criteria();
+        }
+        else if(allCriteria.size()==1) {
+            return allCriteria.get(0);
+        }
+        else if(operation==BooleanOperation.OR) {
+            return new Criteria().orOperator(allCriteria.toArray(new Criteria[allCriteria.size()]));
         }
         else {
-            return new Criteria().andOperator((Criteria[]) allCriteria.toArray());
+            return new Criteria().andOperator(allCriteria.toArray(new Criteria[allCriteria.size()]));
         }
     }
 
@@ -161,7 +165,7 @@ public class CriteriaUtil {
             allLikeCriteria.add(Criteria.where(key).regex(p));
         }
         //TODO I'd really prefer that this was an '$in' query for performance reasons
-        return new Criteria().orOperator((Criteria[])allLikeCriteria.toArray());
+        return new Criteria().orOperator(allLikeCriteria.toArray(new Criteria[allLikeCriteria.size()]));
     }
 
     public Criteria notLikeCriteria(String key, List<String> notLikeValues, MongoType mongoType,boolean ignoreCase) {
@@ -174,7 +178,7 @@ public class CriteriaUtil {
             allNotLikeCriteria.add(Criteria.where(key).not().regex(p));
         }
         //TODO I'd really prefer that this was a '$nin' query for performance reasons
-        return new Criteria().andOperator((Criteria[])allNotLikeCriteria.toArray());
+        return new Criteria().andOperator(allNotLikeCriteria.toArray(new Criteria[allNotLikeCriteria.size()]));
     }
 
     private List<Comparable> convertStringsToType(MongoType type, List<String> values) {

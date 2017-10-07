@@ -20,6 +20,13 @@ class UriParameterOperationAdapterImplSpec extends Specification {
 
         expect:
         output.key == operator
+        //All key operators should have been removed
+        !output.value.contains(")")
+        !output.value.contains("lt(")
+        !output.value.contains("lte(")
+        !output.value.contains("gt(")
+        !output.value.contains("gte(")
+
 
         where:
         key | value || operator
