@@ -41,7 +41,7 @@ public class MongoMetricsRespository {
         return null;
     }
 
-    public List<DBObject> findByCriteria(String collectionName, Criteria criteria) {
+    public List<DBObject> findByCriteria(String collectionName, Criteria criteria, int limit, int skip) {
         if(criteria==null){
             return new ArrayList<>();
         }

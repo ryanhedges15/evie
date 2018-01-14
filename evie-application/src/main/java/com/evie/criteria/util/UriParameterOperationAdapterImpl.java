@@ -52,7 +52,12 @@ public class UriParameterOperationAdapterImpl implements UriParameterOperationAd
             return new Pair<>(LESS_THAN_OR_EQUAL, removeValueOperators(input));
         } else if (input.startsWith("lt(")) {
             return new Pair<>(LESS_THAN, removeValueOperators(input));
-        } else {
+        } else if (key.equals("limit")) {
+            return new Pair<>(PAGE_LIMIT,input);
+        } else if (key.equals("offset")) {
+            return new Pair<>(PAGE_OFFSET,input);
+        }
+        else {
             return new Pair<>(EQUAL, input);
         }
     }
