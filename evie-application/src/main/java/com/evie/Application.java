@@ -31,11 +31,6 @@ public class Application  {
     }
 
     @Bean
-    public MongoClient getMongoClient() {
-        return new MongoClient(new ServerAddress("localhost",27017));
-    }
-
-    @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()

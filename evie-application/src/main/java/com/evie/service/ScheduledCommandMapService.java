@@ -1,6 +1,6 @@
 package com.evie.service;
 
-import com.evie.configuration.ScheduledJobProperties;
+import com.evie.test.util.configuration.ScheduledJobProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

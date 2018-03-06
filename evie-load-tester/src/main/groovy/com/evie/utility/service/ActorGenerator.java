@@ -1,4 +1,4 @@
-package com.evie.util.service;
+package com.evie.utility.service;
 
 import java.util.HashMap;
 import java.util.Map;

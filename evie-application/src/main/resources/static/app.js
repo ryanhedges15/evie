@@ -227,7 +227,7 @@ var App = React.createClass({
  ReactDOM.render(
     <div>
         <Router>
-            <Route path="/" component={Editor}/>
+//            <Route path="/" component={Editor}/>
             <Route path="/devtools" component={ResourcesPage}/>
         </Router>
     </div>,
